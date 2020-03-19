@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Workouts } from "../components/workouts";
+import { JumpToDay } from "../components/jumpToDay";
 
 const Home = () => (
   <div className="container">
@@ -24,6 +25,7 @@ const Home = () => (
         Substitute a similar workout. Make it fun for yourself. Do pushups and
         bodyweight squats. Do more reps.
       </p>
+      <JumpToDay />
       <div>
         <Workouts />
       </div>

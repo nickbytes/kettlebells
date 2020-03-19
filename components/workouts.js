@@ -27,7 +27,11 @@ export function Workouts() {
   return (
     <div>
       {WORKOUT_DATA.map((workout, i) => (
-        <div key={i} style={{ marginBottom: "200px" }}>
+        <div
+          key={i}
+          style={{ paddingTop: "100px", paddingBottom: "100px" }}
+          id={`day-${workout.day}`}
+        >
           <h1>Day {workout.day}</h1>
           <div>
             {workout.exercises.length ? (
@@ -42,6 +46,7 @@ export function Workouts() {
             ) : (
               <> {renderSwitch(workout.day)}</>
             )}
+            <button onClick={() => window.scrollTo(0, 0)}>Top ↑</button>
           </div>
         </div>
       ))}
