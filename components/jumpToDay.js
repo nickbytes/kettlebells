@@ -14,8 +14,9 @@ export function JumpToDay() {
         }}
       >
         {" "}
-        {WORKOUT_DATA.map(d => (
+        {WORKOUT_DATA.map((d, i) => (
           <span
+            key={i}
             style={{
               marginLeft: "8px",
               marginRight: "8px",

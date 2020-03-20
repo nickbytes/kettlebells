@@ -19,7 +19,18 @@ function renderSwitch(day) {
         </div>
       );
     default:
-      return <div>Rest</div>;
+      return (
+        <div
+          style={{
+            marginBottom: "50px",
+            fontSize: "24px",
+            fontWeight: "bold",
+            color: "blue"
+          }}
+        >
+          Rest
+        </div>
+      );
   }
 }
 
@@ -29,14 +40,32 @@ export function Workouts() {
       {WORKOUT_DATA.map((workout, i) => (
         <div
           key={i}
-          style={{ paddingTop: "100px", paddingBottom: "100px" }}
+          style={{
+            borderTop: "1px solid #eaeaea",
+            paddingTop: "50px",
+            paddingBottom: "50px"
+          }}
           id={`day-${workout.day}`}
         >
-          <h1>Day {workout.day}</h1>
-          <div>
+          <h2 style={{ fontSize: "48px" }}>Day {workout.day}</h2>
+          <div
+            style={{
+              alignItems: "flex-start",
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
             {workout.exercises.length ? (
               workout.exercises.map((ex, i) => (
-                <div key={i} style={{ marginBottom: "50px" }}>
+                <div
+                  key={i}
+                  style={{
+                    flexBasis: "50%",
+                    flexShrink: "0",
+                    marginBottom: "50px",
+                    paddingRight: "15px"
+                  }}
+                >
                   <h2>{ex.name}</h2>
                   <p>Sets: {ex.sets}</p>
                   <p>Reps: {ex.reps}</p>
@@ -46,8 +75,8 @@ export function Workouts() {
             ) : (
               <> {renderSwitch(workout.day)}</>
             )}
-            <button onClick={() => window.scrollTo(0, 0)}>Top ↑</button>
           </div>
+          <button onClick={() => window.scrollTo(0, 0)}>Top ↑</button>
         </div>
       ))}
     </div>
