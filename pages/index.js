@@ -5,14 +5,20 @@ import { JumpToDay } from "../components/jumpToDay";
 const Home = () => (
   <div className="container">
     <Head>
+      <meta charSet="UTF-8" />
+      <meta
+        name="viewport"
+        content="initial-scale=1.0, width=device-width"
+        key="viewport"
+      />
       <title>getting ripped</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.png" />
     </Head>
 
-    <main>
+    <main style={{ width: "100%" }}>
       <h1 className="title">We are doing kettlebell workouts in quarantine.</h1>
       <div>
-        <img src="/workout.gif" alt="goblet squats" />
+        <img src="/workout.gif" alt="goblet squats" style={{ width: "100%" }} />
       </div>
       <p className="description">
         Don't have a kettlebell? Use something heavy.
@@ -40,12 +46,14 @@ const Home = () => (
 
     <style jsx>{`
       .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
+        align-items: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        margin: 0 auto;
+        max-width: 1280px;
+        overflow: hidden;
+        padding: 0 0.5rem;
       }
 
       main {
@@ -96,15 +104,7 @@ const Home = () => (
       .description {
         line-height: 1.5;
         font-size: 1.5rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        width: 100%;
       }
 
       .grid {
