@@ -16,7 +16,7 @@ const Home = () => (
     </Head>
 
     <main style={{ width: "100%" }}>
-      <h1 className="title">We are doing kettlebell workouts in quarantine.</h1>
+      <h1 className="title">We're doing kettlebell workouts in quarantine.</h1>
       <div>
         <img src="/workout.gif" alt="goblet squats" style={{ width: "100%" }} />
       </div>
