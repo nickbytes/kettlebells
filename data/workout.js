@@ -18,13 +18,15 @@ function A_WORKOUT({
       name: GOBLET,
       sets: first_sets,
       reps: first_reps,
-      rest: first_rest
+      rest: first_rest,
+      image: "/workouts/goblet-squat.jpg"
     },
     {
       name: SWING,
       sets: second_sets,
       reps: second_reps,
-      rest: second_rest
+      rest: second_rest,
+      image: "/workouts/kettlebell-swing.jpg"
     }
   ]);
 }
@@ -42,13 +44,15 @@ function B_WORKOUT({
       name: ALTERNATING,
       sets: first_sets,
       reps: first_reps,
-      rest: first_rest
+      rest: first_rest,
+      image: "/workouts/kettlebell-press.png"
     },
     {
       name: PULLUP,
       sets: second_sets,
       reps: second_reps,
-      rest: second_rest
+      rest: second_rest,
+      image: "/workouts/pullup.jpg"
     }
   ]);
 }

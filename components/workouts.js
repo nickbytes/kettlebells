@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { WORKOUT_DATA } from "../data/workout";
 
 function renderSwitch(day) {
@@ -35,6 +35,7 @@ function renderSwitch(day) {
 }
 
 export function Workouts() {
+  const [showImage, setShowImage] = useState([]);
   return (
     <div>
       {WORKOUT_DATA.map((workout, i) => (
@@ -42,7 +43,7 @@ export function Workouts() {
           key={i}
           style={{
             borderTop: "1px solid #eaeaea",
-            paddingTop: "50px",
+            paddingTop: "20px",
             paddingBottom: "50px"
           }}
           id={`day-${workout.day}`}
@@ -56,9 +57,9 @@ export function Workouts() {
             }}
           >
             {workout.exercises.length ? (
-              workout.exercises.map((ex, i) => (
+              workout.exercises.map((ex, index) => (
                 <div
-                  key={i}
+                  key={index}
                   style={{
                     flexBasis: "50%",
                     flexShrink: "0",
@@ -66,7 +67,43 @@ export function Workouts() {
                     paddingRight: "15px"
                   }}
                 >
-                  <h2>{ex.name}</h2>
+                  <h2>
+                    {ex.name}{" "}
+                    <span
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "18px",
+                        verticalAlign: "center"
+                      }}
+                      onClick={() => {
+                        let imageArray = [...showImage];
+                        if (imageArray.includes(`${ex.name}-${i}`)) {
+                          imageArray = imageArray.filter(
+                            i => i === `${ex.name}-${i}`
+                          );
+                        } else {
+                          imageArray.push(`${ex.name}-${i}`);
+                        }
+                        return setShowImage(imageArray);
+                      }}
+                    >
+                      &#9432;
+                    </span>
+                  </h2>
+                  <div
+                    style={{
+                      maxWidth: "300px",
+                      display: showImage.includes(`${ex.name}-${i}`)
+                        ? "block"
+                        : "none"
+                    }}
+                  >
+                    <img
+                      style={{ width: "100%" }}
+                      src={ex.image}
+                      alt={ex.name}
+                    />
+                  </div>
                   <p>Sets: {ex.sets}</p>
                   <p>Reps: {ex.reps}</p>
                   <p>Rest: {ex.rest}</p>
