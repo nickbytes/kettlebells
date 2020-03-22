@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import { WORKOUT_DATA } from "../data/workout";
 
 function renderSwitch(day) {
@@ -35,7 +36,25 @@ function renderSwitch(day) {
 }
 
 export function Workouts() {
+  const [completedDays, setCompletedDays] = useState([]);
   const [showImage, setShowImage] = useState([]);
+
+  function updateCompletedDays(day) {
+    let days = [...completedDays];
+    if (days.includes(day)) {
+      days = days.filter(d => d !== day);
+    } else {
+      days.push(day);
+    }
+    setCompletedDays(days);
+    return window.localStorage.setItem("completedDays", JSON.stringify(days));
+  }
+  useEffect(() => {
+    let compDays = JSON.parse(window.localStorage.getItem("completedDays"));
+    compDays = compDays ? compDays : [];
+    setCompletedDays(compDays);
+  }, []);
+
   return (
     <div>
       {WORKOUT_DATA.map((workout, i) => (
@@ -43,17 +62,41 @@ export function Workouts() {
           key={i}
           style={{
             borderTop: "1px solid #eaeaea",
-            paddingTop: "20px",
-            paddingBottom: "50px"
+            paddingTop: completedDays.includes(workout.day) ? "0" : "30px",
+            paddingBottom: completedDays.includes(workout.day) ? "20px" : "50px"
           }}
           id={`day-${workout.day}`}
         >
-          <h2 style={{ fontSize: "48px" }}>Day {workout.day}</h2>
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "flex-start"
+            }}
+          >
+            <span style={{ paddingRight: "10px", transform: "scale(2)" }}>
+              <input
+                checked={completedDays.includes(workout.day)}
+                type="checkbox"
+                onChange={() => updateCompletedDays(workout.day)}
+              />
+            </span>
+            <h2
+              style={{
+                color: completedDays.includes(workout.day) ? "grey" : "black",
+                fontSize: "48px"
+              }}
+            >
+              Day {workout.day}
+            </h2>
+          </div>
           <div
             style={{
               alignItems: "flex-start",
               display: "flex",
-              justifyContent: "space-between"
+              height: completedDays.includes(workout.day) ? "0px" : "auto",
+              justifyContent: "space-between",
+              overflow: "hidden"
             }}
           >
             {workout.exercises.length ? (
