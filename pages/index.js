@@ -153,15 +153,6 @@ const Home = () => (
           flex-direction: column;
         }
       }
-
-      .workoutImage {
-        max-width: 300px;
-      }
-
-      .workoutImage img {
-        height: auto;
-        width: 100%;
-      }
     `}</style>
 
     <style jsx global>{`
