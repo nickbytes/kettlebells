@@ -26,7 +26,7 @@ function renderSwitch(day) {
             marginBottom: "50px",
             fontSize: "24px",
             fontWeight: "bold",
-            color: "blue"
+            color: "blue",
           }}
         >
           Rest
@@ -42,7 +42,7 @@ export function Workouts() {
   function updateCompletedDays(day) {
     let days = [...completedDays];
     if (days.includes(day)) {
-      days = days.filter(d => d !== day);
+      days = days.filter((d) => d !== day);
     } else {
       days.push(day);
     }
@@ -63,7 +63,9 @@ export function Workouts() {
           style={{
             borderTop: "1px solid #eaeaea",
             paddingTop: completedDays.includes(workout.day) ? "0" : "30px",
-            paddingBottom: completedDays.includes(workout.day) ? "20px" : "50px"
+            paddingBottom: completedDays.includes(workout.day)
+              ? "20px"
+              : "50px",
           }}
           id={`day-${workout.day}`}
         >
@@ -71,7 +73,7 @@ export function Workouts() {
             style={{
               alignItems: "center",
               display: "flex",
-              justifyContent: "flex-start"
+              justifyContent: "flex-start",
             }}
           >
             <span style={{ paddingRight: "10px", transform: "scale(2)" }}>
@@ -84,7 +86,7 @@ export function Workouts() {
             <h2
               style={{
                 color: completedDays.includes(workout.day) ? "grey" : "black",
-                fontSize: "48px"
+                fontSize: "48px",
               }}
             >
               Day {workout.day}
@@ -96,7 +98,7 @@ export function Workouts() {
               display: "flex",
               height: completedDays.includes(workout.day) ? "0px" : "auto",
               justifyContent: "space-between",
-              overflow: "hidden"
+              overflow: "hidden",
             }}
           >
             {workout.exercises.length ? (
@@ -107,7 +109,7 @@ export function Workouts() {
                     flexBasis: "50%",
                     flexShrink: "0",
                     marginBottom: "50px",
-                    paddingRight: "15px"
+                    paddingRight: "15px",
                   }}
                 >
                   <h2>
@@ -116,13 +118,13 @@ export function Workouts() {
                       style={{
                         cursor: "pointer",
                         fontSize: "18px",
-                        verticalAlign: "center"
+                        verticalAlign: "center",
                       }}
                       onClick={() => {
                         let imageArray = [...showImage];
                         if (imageArray.includes(`${ex.name}-${i}`)) {
                           imageArray = imageArray.filter(
-                            i => i === `${ex.name}-${i}`
+                            (i) => i === `${ex.name}-${i}`
                           );
                         } else {
                           imageArray.push(`${ex.name}-${i}`);
@@ -135,10 +137,10 @@ export function Workouts() {
                   </h2>
                   <div
                     style={{
-                      maxWidth: "300px",
+                      maxWidth: "350px",
                       display: showImage.includes(`${ex.name}-${i}`)
                         ? "block"
-                        : "none"
+                        : "none",
                     }}
                   >
                     <img
