@@ -13,10 +13,7 @@ function renderSwitch(day) {
     case 34:
       return (
         <div>
-          <p>
-            Challenge yourself doing some sort of aerobic exercise. See if you
-            can beat your best.
-          </p>
+          <p>Run a mile as fast as you can. Walk a mile cooldown.</p>
         </div>
       );
     default:
